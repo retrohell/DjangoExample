@@ -1,17 +1,38 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import ExampleModel
-from django.shortcuts import get_object_or_404
+from .models import Users
+from django.shortcuts import get_object_or_404, render
+from .forms import UsersForm
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello, world. You're at the djapp index.")
+    title = 'Django Example'
+    return render(request, 'index.html', {
+        'title': title
+    })
 # Path: djexample/djapp/urls.py
 
-def exampleModel(request):
-    example = get_object_or_404(ExampleModel.objects.values())
-    return JsonResponse(example, safe=False)
+def about(request):
+    username = 'John Doe'
+    return render(request, 'about.html', {
+        'username': username
+    })
 
-def exampleModelById(request, id):
-    example = get_object_or_404(ExampleModel, id=id)
-    return HttpResponse('Example: %s' % example.name)
+def users(request):
+    users = Users.objects.all()
+    #data = {
+    #    'users': list(users.values())
+    #}
+    return render(request, 'users.html', {
+        'users': users
+    })
+
+def usersById(request, id):
+    user = get_object_or_404(Users, id=id)
+    return HttpResponse('User: %s  ' % user.name)
+
+def usersCreate(request):
+    Users.objects.create(name=request.GET['name'], description=request.GET['description'])
+    return render(request, 'create_user.html', {
+        'form': UsersForm()
+    })

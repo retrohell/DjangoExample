@@ -21,6 +21,8 @@ from djapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('example/', views.exampleModel),
-    path('example/<int:id>/', views.exampleModelById),
+    path('about/', views.about),
+    path('users/', views.users),
+    path('users/<int:id>/', views.usersById),
+    path('users/create/', views.usersCreate),
 ]
