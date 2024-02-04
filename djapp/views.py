@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import Users
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import UsersForm
 
 # Create your views here.
@@ -32,7 +32,11 @@ def usersById(request, id):
     return HttpResponse('User: %s  ' % user.name)
 
 def usersCreate(request):
-    Users.objects.create(name=request.GET['name'], description=request.GET['description'])
-    return render(request, 'create_user.html', {
+    if request.method == 'GET':
+        return render(request, 'create_user.html', {
         'form': UsersForm()
-    })
+        })
+    else:
+        Users.objects.create(name=request.POST['name'], description=request.POST['description'])
+        return redirect('/users/')
+    
