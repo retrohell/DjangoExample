@@ -25,4 +25,6 @@ urlpatterns = [
     path('users/', views.users),
     path('users/<int:id>/', views.usersById),
     path('users/create/', views.usersCreate),
+    path('projects/', views.projects),
+    path('projects/create/', views.projectsCreate)
 ]
