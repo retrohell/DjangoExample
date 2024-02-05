@@ -21,10 +21,10 @@ from djapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('about/', views.about),
-    path('users/', views.users),
-    path('users/<int:id>/', views.usersById),
-    path('users/create/', views.usersCreate),
-    path('projects/', views.projects),
-    path('projects/create/', views.projectsCreate)
+    path('about/', views.about, name='about'),
+    path('users/', views.users, name='users'),
+    path('users/<int:id>/', views.usersById, name='usersById'),
+    path('users/create/', views.usersCreate, name='usersCreate'),
+    path('projects/', views.projects, name='projects'),
+    path('projects/create/', views.projectsCreate, name='projectsCreate')
 ]

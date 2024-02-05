@@ -38,7 +38,7 @@ def usersCreate(request):
         })
     else:
         Users.objects.create(name=request.POST['name'], description=request.POST['description'])
-        return redirect('/users/')
+        return redirect('users')
     
 def projects(request):
     project = Projects.objects.all()
@@ -59,4 +59,4 @@ def projectsCreate(request):
             x = 'False'
         """
         Projects.objects.create(name=request.POST['name'], description=request.POST['description'])
-        return redirect('/projects/')
+        return redirect('projects')
