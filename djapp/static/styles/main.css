@@ -2,3 +2,46 @@ body {
     background: #202020;
     color: whitesmoke;
 }
+
+.navbar {
+    background: #404040;
+    padding: 5px 10px;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul li a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    color: aquamarine;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 20px 10px;
+    margin: auto;
+}
+
+.card  {
+    background: gray;
+    color: black;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.input{
+    background: wheat;
+    padding: 10px;
+    text-align: center;
+    display: block;
+}

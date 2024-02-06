@@ -1,24 +1,27 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Users</h1>
+<h1>Users</h1>
 
-    {% for user in users %}
-    <article>
+{% for user in users %}
+<article>
+    <a href="{% url 'usersById' user.id %}">
         <h3>User: {{ user.name }}</h3>
         <p>description: {{ user.description }}</p>
-    
+
         {% if user.suscribed %}
-            <p>🔔 Suscribed</p>
+        <p>🔔 Suscribed</p>
         {% else %}
-            <p>🔕 Not suscribed</p>
+        <p>🔕 Not suscribed</p>
         {% endif %}
-    
-        <button> ❌ Delete </button>
-        <button> ✅ Suscribe </button>
-    </article>
+    </a>
 
-    {% endfor %}
 
-    <div><button> <a href="./create">Create new user</a> </button></div>
+    <button> ❌ Delete </button>
+    <button> ✅ Suscribe </button>
+</article>
+
+{% endfor %}
+
+<div><button> <a href="{% url 'usersCreate' %}">Create new user</a> </button></div>
 {% endblock %}

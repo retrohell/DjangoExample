@@ -26,5 +26,6 @@ urlpatterns = [
     path('users/<int:id>/', views.usersById, name='usersById'),
     path('users/create/', views.usersCreate, name='usersCreate'),
     path('projects/', views.projects, name='projects'),
-    path('projects/create/', views.projectsCreate, name='projectsCreate')
+    path('projects/create/', views.projectsCreate, name='projectsCreate'),
+    path('projects/<int:id>/', views.projectsById, name='projectsById')
 ]

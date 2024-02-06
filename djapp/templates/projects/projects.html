@@ -2,18 +2,20 @@
 
 {% block content %}
 
-    <h1>Projects</h1>
+<h1>Projects</h1>
 
-    {% for project in projects %}
-    <article>
+{% for project in projects %}
+<article class="card">
+    <a href="{% url 'projectsById' project.id %}">
         <h3>Project: {{ project.name }}</h3>
         <p>description: {{ project.description }}</p>
         <p>status: {{ project.status }}</p>
-        <button> ❌ Delete </button>
-        <button> ✅ Edit </button>
-    </article>
+    </a>
+    <button> ❌ Delete </button>
+    <button> ✅ Edit </button>
+</article>
 
-    {% endfor %}
+{% endfor %}
 
-    <div><button> <a href="./create">Create new project</a> </button></div>
+<div><button> <a href="{% url 'projectsCreate' %}">Create new project</a> </button></div>
 {% endblock %}

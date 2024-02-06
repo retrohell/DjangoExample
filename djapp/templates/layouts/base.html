@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-    <nav>
+    <nav class="navbar container">
         <ul>
             <li>
                 <a href="{% url 'index' %}">Home</a>
@@ -18,16 +19,20 @@
                 <a href="{% url 'users' %}">Users</a>
             </li>
             <li>
-                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'projects' %}">Projects</a>
             </li>
             <li>
-                <a href="{% url 'projects' %}">Projects</a>
+                <a href="{% url 'about' %}">About</a>
             </li>
         </ul>
     </nav>
-    
-    {% block content %}
-    {% endblock %}
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+
+    </main>
 
 </body>
+
 </html>

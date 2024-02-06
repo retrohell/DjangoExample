@@ -27,10 +27,6 @@ def users(request):
         'users': users
     })
 
-def usersById(request, id):
-    user = get_object_or_404(Users, id=id)
-    return HttpResponse('User: %s  ' % user.name)
-
 def usersCreate(request):
     if request.method == 'GET':
         return render(request, 'users/create_user.html', {
@@ -39,6 +35,12 @@ def usersCreate(request):
     else:
         Users.objects.create(name=request.POST['name'], description=request.POST['description'])
         return redirect('users')
+    
+def usersById(request, id):
+    user = Users.objects.get(id=id)
+    return render(request, 'users/users_detail.html', {
+        'user': user
+    })
     
 def projects(request):
     project = Projects.objects.all()
@@ -60,3 +62,9 @@ def projectsCreate(request):
         """
         Projects.objects.create(name=request.POST['name'], description=request.POST['description'])
         return redirect('projects')
+
+def projectsById(request, id):
+    project = get_object_or_404(Projects, id=id)
+    return render(request, 'projects/projects_detail.html', {
+        'project': project
+    })
